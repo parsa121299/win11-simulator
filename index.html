@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+
+    <meta name="theme-color" content="#101827">
+    <meta name="description"
+          content="LIKO Desktop — an interactive web desktop simulator.">
+
+    <title>LIKO Desktop | Windows Simulator</title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Boot screen -->
+    <section id="bootScreen" class="boot-screen">
+        <div class="boot-content">
+            <div class="boot-logo">
+                <i class="fa-brands fa-windows"></i>
+            </div>
+
+            <div class="boot-title">LIKO Desktop</div>
+            <div class="boot-subtitle">Interactive Desktop Simulator</div>
+
+            <div class="boot-spinner"></div>
+            <div class="boot-status" id="bootStatus">
+                در حال آماده‌سازی دسکتاپ...
+            </div>
+        </div>
+    </section>
+
+    <!-- Desktop -->
+    <main id="desktop" class="desktop">
+
+        <div class="desktop-overlay"></div>
+
+        <!-- Desktop icons -->
+        <section id="desktopIcons" class="desktop-icons">
+
+            <button class="desktop-icon" data-app="thispc">
+                <span class="desktop-icon-picture pc-icon">
+                    <i class="fa-solid fa-computer"></i>
+                </span>
+                <span>This PC</span>
+            </button>
+
+            <button class="desktop-icon" data-app="explorer">
+                <span class="desktop-icon-picture folder-icon">
+                    <i class="fa-solid fa-folder"></i>
+                </span>
+                <span>File Explorer</span>
+            </button>
+
+            <button class="desktop-icon" data-app="browser">
+                <span class="desktop-icon-picture browser-icon">
+                    <i class="fa-brands fa-edge"></i>
+                </span>
+                <span>Browser</span>
+            </button>
+
+            <button class="desktop-icon" data-app="notepad">
+                <span class="desktop-icon-picture note-icon">
+                    <i class="fa-solid fa-file-lines"></i>
+                </span>
+                <span>Notepad</span>
+            </button>
+
+            <button class="desktop-icon" data-app="photos">
+                <span class="desktop-icon-picture photo-icon">
+                    <i class="fa-solid fa-images"></i>
+                </span>
+                <span>Photos</span>
+            </button>
+
+            <button class="desktop-icon" data-app="recycle">
+                <span class="desktop-icon-picture trash-icon">
+                    <i class="fa-solid fa-trash-can"></i>
+                </span>
+                <span>Recycle Bin</span>
+            </button>
+
+        </section>
+
+        <!-- App windows -->
+        <section id="windowsArea" class="windows-area"></section>
+
+        <!-- Start menu -->
+        <section id="startMenu" class="start-menu glass hidden">
+
+            <div class="start-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input id="startSearch"
+                       type="search"
+                       placeholder="جست‌وجوی برنامه‌ها..."
+                       autocomplete="off">
+            </div>
+
+            <div class="start-section-heading">
+                <span>برنامه‌های پین‌شده</span>
+                <button id="allAppsButton" class="small-action">همهٔ برنامه‌ها</button>
+            </div>
+
+            <div id="pinnedApps" class="pinned-apps"></div>
+
+            <div class="start-section-heading recommended-heading">
+                <span>پیشنهادی</span>
+                <span class="muted">LIKO Desktop</span>
+            </div>
+
+            <div class="recommended-item">
+                <div class="recommend-icon">
+                    <i class="fa-solid fa-lightbulb"></i>
+                </div>
+                <div>
+                    <strong>به دسکتاپ خوش آمدی!</strong>
+                    <small>برای شروع، یک برنامه باز کن.</small>
+                </div>
+            </div>
+
+            <div class="start-footer">
+                <div class="profile-avatar">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <div class="profile-name">LIKO User</div>
+
+                <button id="powerButton"
+                        class="icon-button"
+                        title="گزینه‌های خروج">
+                    <i class="fa-solid fa-power-off"></i>
+                </button>
+            </div>
+
+        </section>
+
+        <!-- Search panel -->
+        <section id="searchPanel" class="search-panel glass hidden">
+            <div class="panel-title">جست‌وجو</div>
+
+            <input id="globalSearch"
+                   type="search"
+                   placeholder="نام برنامه را بنویس...">
+
+            <div id="searchResults" class="search-results"></div>
+        </section>
+
+        <!-- Quick settings -->
+        <section id="quickPanel" class="quick-panel glass hidden">
+
+            <div class="quick-grid">
+                <button class="quick-tile active" data-action="wifi">
+                    <i class="fa-solid fa-wifi"></i>
+                    <span>Wi-Fi نمایشی</span>
+                </button>
+
+                <button class="quick-tile" data-action="bluetooth">
+                    <i class="fa-brands fa-bluetooth-b"></i>
+                    <span>Bluetooth</span>
+                </button>
+
+                <button class="quick-tile active" data-action="night">
+                    <i class="fa-solid fa-moon"></i>
+                    <span>حالت شب</span>
+                </button>
+
+                <button class="quick-tile" data-action="focus">
+                    <i class="fa-solid fa-bell-slash"></i>
+                    <span>Focus</span>
+                </button>
+            </div>
+
+            <div class="brightness-control">
+                <i class="fa-solid fa-sun"></i>
+                <input id="brightnessSlider"
+                       type="range"
+                       min="60"
+                       max="120"
+                       value="100">
+            </div>
+
+            <div class="quick-note">
+                این گزینه‌ها فقط ظاهر شبیه‌ساز را کنترل می‌کنند.
+            </div>
+
+        </section>
+
+        <!-- Custom context menu -->
+        <div id="contextMenu" class="context-menu hidden">
+
+            <button data-context="refresh">
+                <i class="fa-solid fa-rotate-right"></i>
+                تازه‌سازی
+            </button>
+
+            <button data-context="newnote">
+                <i class="fa-solid fa-file-circle-plus"></i>
+                سند متنی جدید
+            </button>
+
+            <div class="context-divider"></div>
+
+            <button data-context="settings">
+                <i class="fa-solid fa-gear"></i>
+                شخصی‌سازی
+            </button>
+
+            <button data-context="display">
+                <i class="fa-solid fa-display"></i>
+                تنظیمات نمایش
+            </button>
+
+            <div class="context-divider"></div>
+
+            <button data-context="about">
+                <i class="fa-solid fa-circle-info"></i>
+                دربارهٔ LIKO Desktop
+            </button>
+
+        </div>
+
+        <!-- Notification toast -->
+        <div id="toast" class="toast hidden">
+            <i class="fa-solid fa-circle-check"></i>
+            <span id="toastText">انجام شد!</span>
+        </div>
+
+        <!-- Taskbar -->
+        <footer id="taskbar" class="taskbar">
+
+            <div class="taskbar-left">
+                <button id="widgetsButton"
+                        class="taskbar-button"
+                        title="ابزارها">
+                    <i class="fa-solid fa-cloud-sun"></i>
+                </button>
+            </div>
+
+            <div class="taskbar-center">
+
+                <button id="startButton"
+                        class="taskbar-button start-button"
+                        title="Start">
+                    <i class="fa-brands fa-windows"></i>
+                </button>
+
+                <button id="taskbarSearchButton"
+                        class="taskbar-search-button">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Search</span>
+                </button>
+
+                <div id="taskbarApps" class="taskbar-apps"></div>
+
+            </div>
+
+            <div class="taskbar-right">
+
+                <button id="quickSettingsButton"
+                        class="system-tray">
+                    <i class="fa-solid fa-wifi"></i>
+                    <i class="fa-solid fa-volume-high"></i>
+                    <i class="fa-solid fa-battery-three-quarters"></i>
+                </button>
+
+                <button id="clockButton" class="clock-button">
+                    <span id="clockTime">00:00</span>
+                    <span id="clockDate">1405/01/01</span>
+                </button>
+
+            </div>
+
+        </footer>
+
+    </main>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
