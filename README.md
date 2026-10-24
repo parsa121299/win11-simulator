@@ -4,8 +4,7 @@
 
 ### ⚡ A Web-Based Windows 11 Desktop Experience
 
-**A lightweight, interactive Windows 11-inspired desktop simulator built with HTML, CSS, and JavaScript.
-manifest and filesystem are creating**
+**A lightweight, interactive Windows 11-inspired desktop simulator built with HTML, CSS, and JavaScript.**
 
 <br>
 
