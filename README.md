@@ -166,10 +166,10 @@ web applications.
 Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
+git clone https://github.com/parsa121299/win11-simulator
 ```
 
-Replace `YOUR_USERNAME` and `YOUR_REPOSITORY` with your actual
+Replace `parsa121299` and `win11-simulator` with your actual
 GitHub username and repository name.
 
 Alternatively, download the repository as a ZIP file.
