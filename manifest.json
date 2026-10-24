@@ -1,0 +1,19 @@
+{
+  "id": "./",
+  "name": "LIKO Windows 11 Simulator",
+  "short_name": "LIKO Desktop",
+  "description": "A Persian, mobile-friendly Windows 11-inspired desktop simulator created by LIKO.",
+  "lang": "fa",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#101827",
+  "theme_color": "#101827",
+  "categories": [
+    "utilities",
+    "education",
+    "productivity"
+  ]
+}
