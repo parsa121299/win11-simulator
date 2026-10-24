@@ -1,6 +1,7 @@
 <div align="center">
 #manifest.json and filesystem.js are creating please wait
 
+<div align="center">
 
 # 🪟 LIKO Windows 11 Simulator
 
